@@ -437,7 +437,7 @@ func (f *Decimal) UnmarshalJSON(bytes []byte) error {
 	if s == "null" {
 		return nil
 	}
-	if s == "\"NaN\"" {
+	if s == "NaN" {
 		*f = NaN
 		return nil
 	}
@@ -453,7 +453,7 @@ func (f *Decimal) UnmarshalJSON(bytes []byte) error {
 // MarshalJSON implements the json.Marshaler interface.
 func (f Decimal) MarshalJSON() ([]byte, error) {
 	if f.IsNaN() {
-		return []byte("\"NaN\""), nil
+		return []byte(`"NaN"`), nil
 	}
 	buffer := make([]byte, 24)
 	return itoa(buffer, f.fp), nil
