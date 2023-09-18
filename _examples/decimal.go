@@ -2,25 +2,26 @@ package main
 
 import (
 	"fmt"
-	"github.com/robaho/fixed"
+
+	"github.com/uncle-gua/decimal"
 )
 
 func main() {
-	price, err := fixed.NewSErr("136.02")
+	price, err := decimal.NewSErr("136.02")
 	if err != nil {
 		panic(err)
 	}
 
-	quantity := fixed.NewF(3)
+	quantity := decimal.NewF(3)
 
-	fee, _ := fixed.NewSErr(".035")
-	taxRate, _ := fixed.NewSErr(".08875")
+	fee, _ := decimal.NewSErr(".035")
+	taxRate, _ := decimal.NewSErr(".08875")
 
 	subtotal := price.Mul(quantity)
 
-	preTax := subtotal.Mul(fee.Add(fixed.NewF(1)))
+	preTax := subtotal.Mul(fee.Add(decimal.NewF(1)))
 
-	total := preTax.Mul(taxRate.Add(fixed.NewF(1)))
+	total := preTax.Mul(taxRate.Add(decimal.NewF(1)))
 
 	fmt.Println("Subtotal:", subtotal)                      // Subtotal: 408.06
 	fmt.Println("Pre-tax:", preTax)                         // Pre-tax: 422.3421

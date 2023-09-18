@@ -1,12 +1,10 @@
-package fixed_test
+package decimal
 
 import (
 	"bytes"
 	"encoding/json"
 	"math"
 	"testing"
-
-	. "github.com/robaho/fixed"
 )
 
 func TestBasic(t *testing.T) {
@@ -18,7 +16,7 @@ func TestBasic(t *testing.T) {
 		"-0.456",
 	}
 
-	var fs []Fixed
+	var fs []Decimal
 	for _, s := range testCases {
 		f := NewS(s)
 		if f.String() != s {
@@ -554,7 +552,7 @@ func TestEncodeDecode(t *testing.T) {
 }
 
 type JStruct struct {
-	F Fixed `json:"f"`
+	F Decimal `json:"f"`
 }
 
 func TestJSON(t *testing.T) {

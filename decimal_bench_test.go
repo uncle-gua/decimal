@@ -1,10 +1,11 @@
-package fixed
+package decimal
 
 import (
 	"bytes"
-	"github.com/shopspring/decimal"
 	"math/big"
 	"testing"
+
+	"github.com/shopspring/decimal"
 )
 
 func BenchmarkAddFixed(b *testing.B) {

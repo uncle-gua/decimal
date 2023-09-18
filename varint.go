@@ -1,4 +1,4 @@
-package fixed
+package decimal
 
 import "io"
 
