@@ -433,7 +433,7 @@ func ReadFrom(r io.ByteReader) (Decimal, error) {
 
 // UnmarshalJSON implements the json.Unmarshaler interface.
 func (f *Decimal) UnmarshalJSON(bytes []byte) error {
-	s := string(bytes)
+	s := strings.Trim(string(bytes), `"`)
 	if s == "null" {
 		return nil
 	}
