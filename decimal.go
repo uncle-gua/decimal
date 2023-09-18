@@ -33,6 +33,14 @@ var ZERO = Decimal{fp: 0}
 var errTooLarge = errors.New("significand too large")
 var errFormat = errors.New("invalid encoding")
 
+func FromInt64(i int64) Decimal {
+	return Decimal{fp: i}
+}
+
+func (f Decimal) ToInt64() int64 {
+	return f.fp
+}
+
 // NewS creates a new Decimal from a string, returning NaN if the string could not be parsed
 func NewS(s string) Decimal {
 	f, _ := NewSErr(s)
